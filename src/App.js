@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -9,12 +11,13 @@ const App = () => {
       <div key={photo.id} className="img-container">
         <img src={photo.image} alt={photo.title} />
         <div className="edit-eliminar-buttons">
-          <button className="edit-button" onClick={() => editar(photo.id)}>
+          <Button variant='contained' color='primary' className="edit-button" onClick={() => editar(photo.id)}>
             Modificar
-          </button>
-          <button className="eliminar-button" onClick={() => eliminar(photo.id)}>
+          </Button>
+          <Button variant='contained' color='primary' className="eliminar-button" onClick={() => eliminar(photo.id)}>
             Eliminar
-          </button>
+          </Button>
+          
         </div>
         <div className="photo-details">
           <h3>{photo.title}</h3>
@@ -75,17 +78,12 @@ const App = () => {
   return (
     <div className="gallery">
     <h1 className="title">Galería de Fotos</h1>
-    <nav>
-      <ul>
-        <li>Inicio</li>
-        <li>Página del usuario</li>
-      </ul>
-    </nav>
+   
     <form id="addPhotoForm" onSubmit={insertarImagen}>
       <input type="text" id="titleInput" placeholder="Título" />
       <input type="text" id="descriptionInput" placeholder="Descripción" />
       <input type="file" id="imageInput" />
-      <button type="submit">Agregar Foto</button>
+      <Button variant='contained' color='primary' type="submit">Agregar Foto</Button>
     </form>
     <div className="photos">{mostrarImagen()}</div>
   </div>
